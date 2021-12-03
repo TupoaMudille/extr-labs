@@ -1,0 +1,6 @@
+﻿  Source.cpp
+C:\Users\tanap\source\repos\лаба3\лаба3\Postfix.h(139,19): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\tanap\source\repos\лаба3\лаба3\Postfix.h(82,18): warning C4101: check: неиспользованная локальная переменная
+C:\Users\tanap\source\repos\лаба3\лаба3\Postfix.h(153,49): warning C4101: j: неиспользованная локальная переменная
+C:\Users\tanap\source\repos\лаба3\лаба3\Postfix.h(146): warning C4715: Postfix::check: значение возвращается не при всех путях выполнения
+  лаба3.vcxproj -> C:\Users\tanap\source\repos\лаба3\Debug\лаба3.exe
