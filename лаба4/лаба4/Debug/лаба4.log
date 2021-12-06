@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\tanap\source\repos\лаба4\лаба4\main.cpp(11,13): warning C4101: hlobal1: неиспользованная локальная переменная
+  лаба4.vcxproj -> C:\Users\tanap\source\repos\лаба4\Debug\лаба4.exe
