@@ -6,7 +6,7 @@ TSet::TSet(int mp) :MaxPower(mp), BitField(mp)
 	MaxPower = mp;
 }
 
-// конструктор копирования
+// copy
 TSet::TSet(const TSet& s) : MaxPower(s.MaxPower), BitField(s.BitField)
 {
 	BitField = s.BitField;
@@ -18,14 +18,14 @@ void  TSet::print_array()
 	BitField.print_array();
 }
 
-TSet& TSet::operator=(const TSet& s) // присваивание
+TSet& TSet::operator=(const TSet& s) // prisvoit
 {
 	this->BitField = s.BitField;
 	this->MaxPower = s.GetMaxPower();
 	return *this;
 }
 
-int TSet::GetMaxPower(void) const// получить макс. к-во эл-тов
+int TSet::GetMaxPower(void) const// get max count elem
 {
 	return MaxPower;
 }
@@ -36,7 +36,7 @@ TSet::operator TBitField()
 	return (TBitField)*this;
 }
 
-int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n 
+int TBitField::GetMemIndex(const int n) const // index mem for bit n
 {
 
 	if ((n < 0) || (n >= _razmer))
@@ -45,7 +45,7 @@ int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
 
 }
 
-TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n  
+TELEM TBitField::GetMemMask(const int n) const // bit mask for bit n  
 {
 
 	if ((n < 0) || (n >= _razmer))
@@ -54,7 +54,7 @@ TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n
 
 }
 
-TSet TSet::operator<<(int k) //сдвиг битов влево
+TSet TSet::operator<<(int k) //sdvig left
 {
 	this->BitField = BitField << k;
 	return *this;
@@ -62,14 +62,14 @@ TSet TSet::operator<<(int k) //сдвиг битов влево
 }
 
 
-bool TSet::operator==(const TSet& s) // сравнение
+bool TSet::operator==(const TSet& s) // if ravno
 {
 
 	return  (BitField == s.BitField);
 }
 
 
-// конструктор преобразования типа
+// type converter
 
 TSet::TSet(const TBitField& bf)
 {
@@ -78,7 +78,7 @@ TSet::TSet(const TBitField& bf)
 
 
 
-int TSet::IsMember(int Elem) const // элемент множества?
+int TSet::IsMember(int Elem) const // elem in?
 {
 	if (Elem < 0 || Elem >= MaxPower)
 	{
@@ -87,7 +87,7 @@ int TSet::IsMember(int Elem) const // элемент множества?
 	return BitField.GetBit(Elem);
 }
 
-void TSet::InsElem(const int Elem) // включение элемента множества
+void TSet::InsElem(const int Elem) // elem in
 {
 	if (Elem < 0 || Elem >= MaxPower)
 	{
@@ -96,7 +96,7 @@ void TSet::InsElem(const int Elem) // включение элемента множества
 	BitField.SetBit(Elem);
 }
 
-void TSet::DelElem(const int Elem) // исключение элемента множества
+void TSet::DelElem(const int Elem) // throw elem
 {
 	if (Elem < 0 || Elem >= MaxPower)
 	{
@@ -105,18 +105,17 @@ void TSet::DelElem(const int Elem) // исключение элемента множества
 	BitField.ClrBit(Elem);
 }
 
-// теоретико-множественные операции
 
 
 
 
 
-int TSet::operator!=(const TSet& s) // сравнение
+int TSet::operator!=(const TSet& s) // if ne ravno
 {
 	return BitField != s.BitField;
 }
 
-TSet TSet::operator+(const TSet &s) // объединение
+TSet TSet::operator+(const TSet &s) // with
 {
 	int len = MaxPower;
 	if (s.MaxPower > MaxPower)
@@ -129,8 +128,7 @@ TSet TSet::operator+(const TSet &s) // объединение
 	return temp;
 }
 
-TSet TSet::operator+(const int Elem) // объединение с элементом
-{
+TSet TSet::operator+(const int Elem) // with elem
 	if (Elem < 0 || Elem >= MaxPower)
 	{
 		throw std::logic_error("INCORRECT ELEMENT");
@@ -140,7 +138,7 @@ TSet TSet::operator+(const int Elem) // объединение с элементом
 	return *this;
 }
 
-TSet TSet::operator-(const int Elem) // разность с элементом
+TSet TSet::operator-(const int Elem) // razn with elem
 {
 	if (Elem < 0 || Elem >= MaxPower)
 	{
@@ -151,7 +149,7 @@ TSet TSet::operator-(const int Elem) // разность с элементом
 	return *this;
 }
 
-TSet TSet::operator*(const TSet &s) // пересечение
+TSet TSet::operator*(const TSet &s) // has same something
 {
 	int len = MaxPower;
 	if (s.MaxPower > MaxPower)
@@ -163,15 +161,15 @@ TSet TSet::operator*(const TSet &s) // пересечение
 	return temp;
 }
 
-TSet TSet::operator~(void) // дополнение
+TSet TSet::operator~(void) // inventor
 {
 	BitField = ~BitField;
 	return *this;
 }
 
-// перегрузка ввода/вывода
+// input-output
 
-istream &operator>>(istream &istr, TSet &s) // ввод
+istream &operator>>(istream &istr, TSet &s) // input
 {
 	int temp;
 	char ch;
@@ -184,7 +182,7 @@ istream &operator>>(istream &istr, TSet &s) // ввод
 	return istr;
 }
 
-ostream& operator<<(ostream& ostr, const TSet& s) // вывод
+ostream& operator<<(ostream& ostr, const TSet& s) // output
 {
 	int i, n; char ch = ' ';
 	ostr << "{";
