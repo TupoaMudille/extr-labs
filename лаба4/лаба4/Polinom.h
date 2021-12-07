@@ -7,8 +7,8 @@ class Polinom
 public:
     void koef1(int n1)
     {
-        int k[10];
-        std::cout << "Введите коэффициенты мономов\n";
+        int k[10]={0};
+        std::cout << "enter koeff of monoms:\n";
         for (int i = 0; i <= n1; i++)
             std::cin >> k[i];
         polin1(n1, k);
@@ -24,10 +24,10 @@ public:
         }
         std::cout << k[n1];
         int n2;
-        std::cout << "\nВведите значение степени второго полинома:\n";
+        std::cout << "\nStepen of the second polinom:\n";
         std::cin >> n2;
         if ((n2 > 9)||(n2>n1+1)||(n2<n1-1)) {
-            std::cout << "Ошибка!!!! слишком большой разброс степеней";
+            std::cout << "Error!!!! too much stepen";
             exit(-1);
         }
         koef2(n1, n2, k);
@@ -36,8 +36,8 @@ public:
     /////////////////////////////////////////
     void koef2(int n1, int n2, int* k)
     {
-        int z[10];
-        std::cout << "\nВведите коэффициенты мономов\n";
+        int z[10]={0};
+        std::cout << "\nenter koeff of monoms\n";
         for (int i = 0; i <= n2; i++)
             std::cin >> z[i];
         polin2(n1, n2, k, z);
@@ -59,8 +59,8 @@ public:
         int s1 = n1;
         int s2 = n2;
         int nn[20];
-        std::cout << "\nСумма двух полиномов: \n";
-        for (int i = 0; (i <= n1) & (i <= n2); i++) {
+        std::cout << "\nsumm of polinoms: \n";
+        for (int i = 0; ((i <= n1) || (i <= n2)) & (s1 > 0) & (s2 > 0); i++) {
             if (s1 == s2) {
                 nn[i] = k[i] + z[i];
                 std::cout << nn[i] << "*x^(" << s1 << ")";
@@ -69,17 +69,17 @@ public:
             }
             if (s1 > s1) {
 
-                {
+                
                     std::cout << k[i] << "*x^(" << s1 << ")";
                     s1--;
-                }
+                
             }
             if (s2 > s1) {
 
-                {
+                
                     std::cout << z[i] << "*x^(" << s2 << ")";
                     s2--;
-                }
+                
             }
             std::cout << " + ";
         }
@@ -91,27 +91,27 @@ public:
         int s1 = n1;
         int s2 = n2;
         int nn[20];
-        std::cout << "\nРазность двух полиномов: \n";
-        for (int i = 0; (i <= n1) & (i <= n2); i++) {
+        std::cout << "\nraznost of polinoms: \n";
+        for (int i = 0; ((i <= n1) || (i <= n2)) & (s1 > 0) & (s2 > 0); i++) {
+            nn[i] = k[i] - z[i];
             if (s1 == s2) {
-                nn[i] = k[i] - z[i];
                 std::cout << nn[i] << "*x^(" << s1 << ")";
                 s1--;
                 s2--;
             }
             if (s1 > s1) {
-                while (s1 > s2)
-                {
-                    std::cout << k[i] << "*x^(" << s1 << ")";
+
+                
+                    std::cout << nn[i] << "*x^(" << s1 << ")";
                     s1--;
-                }
+                
             }
             if (s2 > s1) {
-                while (s2 > s1)
-                {
-                    std::cout << 0-z[i] << "*x^(" << s2 << ")";
+
+                
+                    std::cout << nn[i] << "*x^(" << s2 << ")";
                     s2--;
-                }
+                
             }
             std::cout << " + ";
         }
@@ -123,8 +123,8 @@ public:
         int s1 = n1;
         int s2 = n2;
         int nn[20];
-        std::cout << "\nПоэлементное произведение двух полиномов: \n";
-        for (int i = 0; (i <= n1) & (i <= n2); i++) {
+        std::cout << "\nproizv polinoms: \n";
+        for (int i = 0; ((i <= n1) || (i <= n2)) & (s1 > 0) & (s2 > 0); i++) {
             if (s1 == s2) {
                 nn[i] = k[i] * z[i];
                 std::cout << nn[i] << "*x^(" << s1 * 2 << ")";
@@ -133,17 +133,17 @@ public:
             }
             if (s1 > s1) {
 
-                {
+                
                     std::cout << k[i] << "*x^(" << s1 << ")";
                     s1--;
-                }
+                
             }
             if (s2 > s1) {
 
-                {
+                
                     std::cout << z[i] << "*x^(" << s2 << ")";
                     s2--;
-                }
+                
             }
             std::cout << " + ";
         }
