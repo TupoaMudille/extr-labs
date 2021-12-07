@@ -9,6 +9,6 @@ int main(int argc, char** argv)
     matrix.input_matrix();
     matrix.print_matrix();
 
-    Matrix<int> matrix2(99999999);
+    Matrix<int> matrix2(99999999);//error in size
     Matrix<int> matrix3(0);
 }
