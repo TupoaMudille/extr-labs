@@ -10,34 +10,34 @@ class Vector
 {
 protected:
     TypeVal* tVector;
-    int size_v{};       // размер вектора
-    int start_index_v{}; // индекс первого элемента вектора
+    int size_v{};       // size vector
+    int start_index_v{}; // index first elem
     const int MAX_VECTOR_SIZE = 10000000;
 public:
     explicit Vector(int size = 10, int start_index = 0);
-    Vector(const Vector& v);                // конструктор копирования
+    Vector(const Vector& v);                // copy
     ~Vector();
-    int get_size() const { return size_v; } // размер вектора
-    int get_start_index_v() const { return start_index_v; } // индекс первого элемента
-    TypeVal& operator[](int pos);             // доступ
-    bool operator==(const Vector<TypeVal>& v) const;  // сравнение если равно
-    bool operator!=(const Vector<TypeVal>& v) const;  // сравнение если не равно
-    Vector<TypeVal>& operator=(const Vector& v);     // присваивание
+    int get_size() const { return size_v; } // size vector
+    int get_start_index_v() const { return start_index_v; } // index first elem
+    TypeVal& operator[](int pos);             // dostup
+    bool operator==(const Vector<TypeVal>& v) const;  // if ravno
+    bool operator!=(const Vector<TypeVal>& v) const;  // if ne ravno
+    Vector<TypeVal>& operator=(const Vector& v);     // prisvoit
 
-    // скалярные операции
-    Vector  operator+(const TypeVal& val);   // прибавить скаляр
-    Vector  operator-(const TypeVal& val);   // вычесть скаляр
-    Vector  operator*(const TypeVal& val);   // умножить на скаляр
+    // scalar operations
+    Vector  operator+(const TypeVal& val);   // summ scalar
+    Vector  operator-(const TypeVal& val);   // razn scalar
+    Vector  operator*(const TypeVal& val);   // umnozh scalar
 
-    // векторные операции
-    Vector  operator+(const Vector<TypeVal>& v);     // сложение
-    Vector  operator-(const Vector<TypeVal>& v);     // вычитание
-    TypeVal  operator*(const Vector<TypeVal>& v);     // скалярное произведение
+    // vector operations
+    Vector  operator+(const Vector<TypeVal>& v);     // summ
+    Vector  operator-(const Vector<TypeVal>& v);     // razn
+    TypeVal  operator*(const Vector<TypeVal>& v);     // scalar umnozh
 
     void input();
     void print();
 
-    // ввод-вывод
+    // input-output
     friend std::istream& operator>>(std::istream& in, Vector& v)
     {
         for (int i = 0; i < v.size_v; i++)
@@ -58,12 +58,12 @@ Vector<TypeVal>::Vector(int size, int start_index)
     setlocale(LC_ALL, "Russian");
     if (size < 0 || size > MAX_VECTOR_SIZE)
     {
-        cout << "Ошибка!!!! в размере";
+        cout << "error!!! in size";
         std::exit(-1);
     }
     if (start_index < 0 || start_index > MAX_VECTOR_SIZE)
     {
-        cout << "Ошибка!!!!!! в индексе";
+        cout << "error!!!! in index";
         std::exit(-2);
     }
     size_v = size;
@@ -96,7 +96,7 @@ TypeVal& Vector<TypeVal>::operator[](int pos)
     setlocale(LC_ALL, "Russian");
     if (pos - start_index_v < 0 || pos - start_index_v >= size_v)
     {
-        cout << "логическая ошибка!!!!!!";
+        cout << "logical error!!!!!!";
         return -3;
     }
     return tVector[pos - start_index_v];
@@ -196,7 +196,7 @@ Vector<TypeVal> Vector<TypeVal>::operator+(const Vector<TypeVal>& v)
     setlocale(LC_ALL, "Russian");
     if (size_v != v.get_size())
     {
-        cout << "логическа ошибка, нельзя работать с разными по размеру векторами";
+        cout << "logical error!!! different vector's size";
         return -4;
     }
 
@@ -214,7 +214,7 @@ Vector<TypeVal> Vector<TypeVal>::operator-(const Vector<TypeVal>& v)
     setlocale(LC_ALL, "Russian");
     if (size_v != v.get_size())
     {
-        cout << "логическа ошибка, нельзя работать с разными по размеру векторами";
+        cout << "logical error!!! different vector's size";
         return -4;
     }
 
@@ -234,7 +234,7 @@ TypeVal Vector<TypeVal>::operator*(const Vector<TypeVal>& v)
     setlocale(LC_ALL, "Russian");
     if (size_v != v.get_size())
     {
-        cout << "логическа ошибка, нельзя работать с разными по размеру векторами";
+        cout << "logical error!!! different vector's size";
         return -4;
     }
 
