@@ -143,13 +143,13 @@ TBitField TBitField::operator~(void)
 {
 	std::printf("\n operator ~ ");
 	int size_of_result = this->GetLength();
-	TBitField result;  //вызывается конструктор по умолчанию
-	result.resize(size_of_result);  //задаем временному объекту новый размер
+	TBitField result;  //constructor default
+	result.resize(size_of_result);  //new size
 	for (int i = 0; i < size_of_result; i++)
 	{
-		if (this->GetBit(i) == 0) result.SetBit(i);    //если элемент исходного массива равен нулю
-		std::printf("  %d ", result.GetBit(i));        //то задаем ему 1, а если равен 1 то прсто пропускаем
-	}                    //потому что новый массив уже инициализирован нулями
+		if (this->GetBit(i) == 0) result.SetBit(i);    //if elem=0
+		std::printf("  %d ", result.GetBit(i));        //it=1, else = ignore
+	}                
 	return result;
 }
 //-------------------------------------------------------------
@@ -178,12 +178,12 @@ TBitField TBitField::operator|(const TBitField& bf)
 	return result;
 }
 //-----------------------------------------------------------------
-TBitField TBitField::operator>>(int k) // сдвиг битов вправо, то есть битов должно стать меньше в новом массиве
+TBitField TBitField::operator>>(int k) 
 {
-	std::printf("\n operator >> ");              //так как бты нового объекта будут сдвинуты вправо
-	int size_of_result = this->GetLength() - k;    //то и размер уменьшаем на столько же бит
-	TBitField result;  //вызывается конструктор по умолчанию
-	result.resize(size_of_result);  //задаем временному объекту новый размер
+	std::printf("\n operator >> ");             
+	int size_of_result = this->GetLength() - k;    
+	TBitField result;  
+	result.resize(size_of_result);  
 
 	for (int new_mas = size_of_result - 1, old_mas = this->GetLength() - 1; new_mas >= 0; new_mas--, old_mas--)
 	{
@@ -195,12 +195,12 @@ TBitField TBitField::operator>>(int k) // сдвиг битов вправо, то есть битов долж
 	return result;
 }
 //--------------------------------------------------------------------
-TBitField TBitField::operator<<(int k) // сдвиг битов вправо, то есть битов должно стать меньше в новом массиве
+TBitField TBitField::operator<<(int k)
 {
-	std::printf("\n operator >> ");              //так как бты нового объекта будут сдвинуты вправо
-	int size_of_result = this->GetLength() + k;    //то и размер уменьшаем на столько же бит
-	TBitField result;  //вызывается конструктор по умолчанию
-	result.resize(size_of_result);  //задаем временному объекту новый размер
+	std::printf("\n operator >> ");              
+	int size_of_result = this->GetLength() + k;    
+	TBitField result;  
+	result.resize(size_of_result);  
 
 
 	for (int new_mas = size_of_result - 1, old_mas = this->GetLength() - 1;
@@ -231,8 +231,8 @@ TBitField TBitField::operator&(const TBitField& bf)
 	{
 		std::printf("\n%d ", bf.GetBit(i));
 		std::printf("  %d ", this->pMem[i]);
-		if (bf.GetBit(i) == 1 && this->pMem[i] == 1) // И — возвращается true,
-			result.SetBit(i);      //только если оба бита в столбце равны 1
+		if (bf.GetBit(i) == 1 && this->pMem[i] == 1) 
+			result.SetBit(i);      
 		std::printf("  %d ", result.GetBit(i));
 	}
 	return result;
