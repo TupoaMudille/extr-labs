@@ -9,10 +9,10 @@ int main()
     Polinom objPolinom;
 
     int n1, hlobal1;
-    std::cout << "¬ведите значение степени первого полинома:\n";
+    std::cout << "stepen of polinom:\n";
     std::cin >> n1;
     if (n1 > 9) {
-        std::cout << "ќшибка!!!! слишком большой полином";
+        std::cout << "error!!! too much stepen";
         exit(-1);
     }
     objPolinom.koef1(n1);
