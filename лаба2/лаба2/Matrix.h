@@ -6,18 +6,18 @@ class Matrix : public Vector<Vector<TypeVal> >
 public:
     const int MAX_MATRIX_SIZE = 1000;
     explicit Matrix(int s = 10);
-    Matrix(const Matrix& vt);                    // копирование
-    Matrix(const Vector<Vector<TypeVal> >& vt); // преобразование типа
-    bool operator==(const Matrix& vt) const;      // сравнение если равно
-    bool operator!=(const Matrix& vt) const;      // сравнение если не равно
-    Matrix& operator= (const Matrix& vt);        // присваивание
-    Matrix  operator+ (const Matrix& vt);        // сложение
-    Matrix  operator- (const Matrix& vt);        // вычитание
+    Matrix(const Matrix& vt);                    // copy
+    Matrix(const Vector<Vector<TypeVal> >& vt); // type conversion
+    bool operator==(const Matrix& vt) const;      // if ravno
+    bool operator!=(const Matrix& vt) const;      // if neravno
+    Matrix& operator= (const Matrix& vt);        // prisvoit
+    Matrix  operator+ (const Matrix& vt);        // summ
+    Matrix  operator- (const Matrix& vt);        // razn
 
     void input_matrix();
     void print_matrix();
 
-    // ввод // вывод
+    // ГўГўГ®Г¤ // ГўГ»ГўГ®Г¤
     friend std::istream& operator>>(std::istream& in, Matrix& vt)
     {
         for (int i = 0; i < vt.Size; i++)
@@ -38,7 +38,7 @@ Matrix<TypeVal>::Matrix(int s) : Vector<Vector<TypeVal> >(s)
 
     if (s <= 0 || s > MAX_MATRIX_SIZE)
     {
-        cout << "Ошибка!!!!!! в размере";
+        cout << "errror!!!! in size";
         std::exit(-6);
     }
     for (int i = 0; i < s; i++)
@@ -47,40 +47,40 @@ Matrix<TypeVal>::Matrix(int s) : Vector<Vector<TypeVal> >(s)
     }
 }
 
-template <class TypeVal> // конструктор копирования
+template <class TypeVal> // copy
 Matrix<TypeVal>::Matrix(const Matrix<TypeVal>& vt) :
     Vector<Vector<TypeVal> >(vt) {}
 
-template <class TypeVal> // конструктор преобразования типа
+template <class TypeVal> // type converter
 Matrix<TypeVal>::Matrix(const Vector<Vector<TypeVal> >& vt) :
     Vector<Vector<TypeVal> >(vt) {}
 
-template <class TypeVal> // сравнение если равно
+template <class TypeVal> // if ravno
 bool Matrix<TypeVal>::operator==(const Matrix<TypeVal>& vt) const
 {
     return Vector<Vector<TypeVal>>::operator==(vt);
 }
 
-template <class TypeVal> // сравнение если не равно
+template <class TypeVal> // if neravno
 bool Matrix<TypeVal>::operator!=(const Matrix<TypeVal>& vt) const
 {
     return !(*this == vt);
 }
 
-template <class TypeVal> // присваивание
+template <class TypeVal> // prisvoit
 Matrix<TypeVal>& Matrix<TypeVal>::operator=(const Matrix<TypeVal>& vt)
 {
     Vector<Vector<TypeVal>>::operator=(vt);
     return *this;
 }
 
-template <class TypeVal> // сложение
+template <class TypeVal> // summ
 Matrix<TypeVal> Matrix<TypeVal>::operator+(const Matrix<TypeVal>& vt)
 {
     return Vector<Vector<TypeVal>>::operator+(vt);
 }
 
-template <class TypeVal> // вычитание
+template <class TypeVal> // razn
 Matrix<TypeVal> Matrix<TypeVal>::operator-(const Matrix<TypeVal>& vt)
 {
     return Vector<Vector<TypeVal>>::operator-(vt);
