@@ -26,7 +26,7 @@ public:
         int n2;
         std::cout << "\nStepen of the second polinom:\n";
         std::cin >> n2;
-        if ((n2 > 9)||(n2>n1+1)||(n2<n1-1)) {
+        if (n2 > 9) {
             std::cout << "Error!!!! too much stepen";
             exit(-1);
         }
