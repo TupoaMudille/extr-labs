@@ -8,38 +8,38 @@ typedef int TELEM;
 class TBitField
 {
 private:
-	int _razmer;// длина битового поля - макс. к-во битов
-	TELEM* pMem; // память для представления битового поля
-	int  MemLen, Elem; // к-во эл-тов Мем для представления бит.поля
-	int   GetMemIndex(const int n) const; // индекс в pМем для бита n       (#О2)
-	TELEM GetMemMask(const int n) const; // битовая маска для бита n  
+	int _razmer;// len bit polya - max count bit
+	TELEM* pMem; // memory for len bit polya
+	int  MemLen, Elem; // count mem for  bit polya
+	int   GetMemIndex(const int n) const; // indx pmem for bit n      (#ГЋ2)
+	TELEM GetMemMask(const int n) const; // bit mask for bit n 
 
-	// методы реализации
+	// methods of realization
 
 public:
-	//                                   (#О1)
-	TBitField(const TBitField& bf);  // копирующий конструктор              (#П1)
+	//                                (#ГЋ1)
+	TBitField(const TBitField& bf);  // copy             (#ГЏ1)
 	TBitField(int Elem);
 	TBitField();
 
-	TBitField& resize(int size);  //используем resize каждый раз когда новый массив не равен старому
+	TBitField& resize(int size);  //we use resize every time the new array is not equal to the old one
 
 	~TBitField();
-	// доступ к битам
-	int GetLength(void) const;      // получить длину (к-во битов)           (#О)
-	void SetBit(const int i);       // установить бит                       (#О4)
-	void ClrBit(const int i);       // очистить бит                         (#П2)
-	int  GetBit(const int i) const; // получить значение бита               (#Л1)
-	TBitField& operator=(const TBitField& bf); // присваивание              (#П3)
+	// ostup into bit   
+	int GetLength(void) const;      // get len           (#ГЋ)
+	void SetBit(const int i);       // set bit                      (#ГЋ4)
+	void ClrBit(const int i);       // clear bit                      (#ГЏ2)
+	int  GetBit(const int i) const; // get sign bit              (#Г‹1)
+	TBitField& operator=(const TBitField& bf); // prisvoit             (#ГЏ3)
 
-	TBitField operator>>(int k); //сдвиг битов в право
-	TBitField operator<<(int k); //сдвиг битов в лево
-	bool operator==(const TBitField& bf); // сравнение 
-	bool operator!=(const TBitField& bf); // сравнение
-	TBitField operator|(const TBitField& bf); // операция "или" 
-	TBitField operator~(void); //операция отрицания
+	TBitField operator>>(int k); //sdvig right
+	TBitField operator<<(int k); //sdvig left
+	bool operator==(const TBitField& bf); // if ravno
+	bool operator!=(const TBitField& bf); // if ne ravno
+	TBitField operator|(const TBitField& bf); // or
+	TBitField operator~(void); //inventor
 
-	TBitField  operator&(const TBitField& bf); // операция "и"  
+	TBitField  operator&(const TBitField& bf); // and
 	void print_array();
 	bool test();
 };
