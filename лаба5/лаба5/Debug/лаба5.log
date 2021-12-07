@@ -1,0 +1,5 @@
+﻿  cpu.cpp
+C:\Users\tanap\source\repos\лаба5\лаба5\cpu.cpp(73,14): warning C4018: <: несоответствие типов со знаком и без знака
+  main.cpp
+  Создание кода...
+  лаба5.vcxproj -> C:\Users\tanap\source\repos\лаба5\Debug\лаба5.exe
